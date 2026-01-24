@@ -3,6 +3,8 @@
 import sys
 from typing import List
 
+__version__ = "1.0.0"
+
 from .storage import TaskStorage
 from .utils import format_timestamp, truncate_string
 
@@ -85,6 +87,7 @@ def print_usage() -> None:
     print("  list [-v]        List all tasks")
     print("  complete <id>    Mark a task as completed")
     print("  delete <id>      Delete a task")
+    print("  version          Show version information")
     print("  help             Show this help message")
 
 
@@ -107,6 +110,10 @@ def main() -> int:
 
     if command == "help":
         print_usage()
+        return 0
+
+    if command == "version":
+        print(f"TaskTracker v{__version__}")
         return 0
 
     if command not in commands:
