@@ -30,6 +30,10 @@ class Task:
         self.completed = True
         self.completed_at = datetime.now()
 
+    def set_priority(self, priority: Priority) -> None:
+        """Update the task priority."""
+        self.priority = priority
+
     def to_dict(self) -> dict:
         """Convert task to dictionary for serialization."""
         return {
