@@ -3,7 +3,7 @@
 import sys
 from typing import List
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 from .storage import TaskStorage
 from .utils import format_timestamp, truncate_string
