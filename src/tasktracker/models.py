@@ -14,6 +14,7 @@ class Task:
     completed: bool = False
     created_at: datetime = field(default_factory=datetime.now)
     completed_at: Optional[datetime] = None
+    due_date: Optional[datetime] = None
 
     def complete(self) -> None:
         """Mark the task as completed."""
@@ -28,6 +29,7 @@ class Task:
             "completed": self.completed,
             "created_at": self.created_at.isoformat(),
             "completed_at": self.completed_at.isoformat() if self.completed_at else None,
+            "due_date": self.due_date.isoformat() if self.due_date else None,
         }
 
     @classmethod
@@ -40,5 +42,8 @@ class Task:
             created_at=datetime.fromisoformat(data["created_at"]),
             completed_at=datetime.fromisoformat(data["completed_at"])
             if data["completed_at"]
+            else None,
+            due_date=datetime.fromisoformat(data["due_date"])
+            if data.get("due_date")
             else None,
         )
