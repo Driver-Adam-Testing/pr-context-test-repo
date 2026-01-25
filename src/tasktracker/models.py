@@ -14,6 +14,7 @@ class Task:
     completed: bool = False
     created_at: datetime = field(default_factory=datetime.now)
     completed_at: Optional[datetime] = None
+    tags: list[str] = field(default_factory=list)
 
     def complete(self) -> None:
         """Mark the task as completed."""
@@ -28,6 +29,7 @@ class Task:
             "completed": self.completed,
             "created_at": self.created_at.isoformat(),
             "completed_at": self.completed_at.isoformat() if self.completed_at else None,
+            "tags": self.tags,
         }
 
     @classmethod
@@ -41,4 +43,5 @@ class Task:
             completed_at=datetime.fromisoformat(data["completed_at"])
             if data["completed_at"]
             else None,
+            tags=data.get("tags", []),
         )
