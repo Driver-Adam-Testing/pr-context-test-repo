@@ -21,6 +21,10 @@ class Task:
         self.completed = True
         self.completed_at = datetime.now()
 
+    def set_due_date(self, due_date: datetime) -> None:
+        """Set the due date for the task."""
+        self.due_date = due_date
+
     def to_dict(self) -> dict:
         """Convert task to dictionary for serialization."""
         return {
