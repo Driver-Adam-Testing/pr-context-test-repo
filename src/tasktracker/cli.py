@@ -86,6 +86,12 @@ def cmd_count(storage: TaskStorage, args: List[str]) -> int:
     return 0
 
 
+def cmd_version(storage: TaskStorage, args: List[str]) -> int:
+    """Show version information."""
+    print("TaskTracker v2.0.0")
+    return 0
+
+
 def print_usage() -> None:
     """Print usage information."""
     print("Usage: tasktracker <command> [args]")
@@ -96,6 +102,7 @@ def print_usage() -> None:
     print("  complete <id>    Mark a task as completed")
     print("  delete <id>      Delete a task")
     print("  count            Show task statistics")
+    print("  version          Show version information")
     print("  help             Show this help message")
 
 
@@ -115,6 +122,7 @@ def main() -> int:
         "complete": cmd_complete,
         "delete": cmd_delete,
         "count": cmd_count,
+        "version": cmd_version,
     }
 
     if command == "help":
