@@ -68,3 +68,23 @@ class TaskStorage:
                 self._save()
                 return True
         return False
+
+    def archive_completed(self, archive_path: str = "archived_tasks.json") -> int:
+        """Archive all completed tasks to a separate file. Returns count archived."""
+        completed = [t for t in self._tasks if t.completed]
+        if not completed:
+            return 0
+
+        archive_file = Path(archive_path)
+        archived_data = {"tasks": []}
+        if archive_file.exists():
+            with open(archive_file, "r") as f:
+                archived_data = json.load(f)
+
+        archived_data["tasks"].extend([t.to_dict() for t in completed])
+        with open(archive_file, "w") as f:
+            json.dump(archived_data, f, indent=2)
+
+        self._tasks = [t for t in self._tasks if not t.completed]
+        self._save()
+        return len(completed)
