@@ -32,3 +32,8 @@ def time_ago(dt: datetime) -> str:
     else:
         days = int(seconds / 86400)
         return f"{days} day{'s' if days != 1 else ''} ago"
+
+
+def format_note(title: str, content: str) -> str:
+    """Format a note with title and content."""
+    return f"## {title}\n\n{content}"
