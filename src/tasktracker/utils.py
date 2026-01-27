@@ -43,3 +43,22 @@ def parse_date(date_str: str) -> datetime:
         except ValueError:
             continue
     raise ValueError(f"Unable to parse date: {date_str}")
+
+
+def slugify(text: str) -> str:
+    """Convert text to a URL-friendly slug.
+
+    This is experimental and may change.
+    """
+    import re
+    # Convert to lowercase
+    slug = text.lower()
+    # Replace spaces with hyphens
+    slug = slug.replace(" ", "-")
+    # Remove non-alphanumeric characters (except hyphens)
+    slug = re.sub(r"[^a-z0-9-]", "", slug)
+    # Remove multiple consecutive hyphens
+    slug = re.sub(r"-+", "-", slug)
+    # Strip leading/trailing hyphens
+    slug = slug.strip("-")
+    return slug
