@@ -68,3 +68,7 @@ class TaskStorage:
                 self._save()
                 return True
         return False
+
+    def exists(self, task_id: int) -> bool:
+        """Check if a task exists."""
+        return self.get(task_id) is not None
