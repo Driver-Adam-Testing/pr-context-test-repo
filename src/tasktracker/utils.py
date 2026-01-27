@@ -32,3 +32,12 @@ def time_ago(dt: datetime) -> str:
     else:
         days = int(seconds / 86400)
         return f"{days} day{'s' if days != 1 else ''} ago"
+
+
+def validate_task_title(title: str) -> bool:
+    """Validate that a task title meets requirements."""
+    if not title or not title.strip():
+        return False
+    if len(title) > 200:
+        return False
+    return True
