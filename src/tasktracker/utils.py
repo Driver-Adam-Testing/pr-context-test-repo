@@ -32,3 +32,8 @@ def time_ago(dt: datetime) -> str:
     else:
         days = int(seconds / 86400)
         return f"{days} day{'s' if days != 1 else ''} ago"
+
+
+def pluralize(word: str, count: int) -> str:
+    """Return singular or plural form based on count."""
+    return word if count == 1 else f"{word}s"
