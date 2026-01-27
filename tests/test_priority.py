@@ -78,3 +78,4 @@ class TestTaskPriority:
             Priority.MEDIUM,
             Priority.URGENT,
         ]
+
