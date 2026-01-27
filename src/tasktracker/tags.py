@@ -1,10 +1,13 @@
-"""Tag management for tasks."""
+"""Tag management for tasks.
+
+Provides a TagManager class for centralized tag storage and lookup.
+"""
 
 from typing import List, Set
 
 
 class TagManager:
-    """Manages tags across all tasks."""
+    """Manages tags across all tasks with normalization support."""
 
     def __init__(self):
         self._tags: Set[str] = set()
