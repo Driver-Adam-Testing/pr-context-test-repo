@@ -42,3 +42,14 @@ class Task:
             if data["completed_at"]
             else None,
         )
+
+
+class TaskDescription:
+    """Extended description for tasks."""
+    
+    def __init__(self, short: str, detailed: str = ""):
+        self.short = short
+        self.detailed = detailed
+    
+    def __str__(self) -> str:
+        return self.short if not self.detailed else f"{self.short}: {self.detailed}"
