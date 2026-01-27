@@ -11,6 +11,7 @@ class Task:
 
     id: int
     title: str
+    notes: Optional[str] = None
     completed: bool = False
     created_at: datetime = field(default_factory=datetime.now)
     completed_at: Optional[datetime] = None
@@ -25,6 +26,7 @@ class Task:
         return {
             "id": self.id,
             "title": self.title,
+            "notes": self.notes,
             "completed": self.completed,
             "created_at": self.created_at.isoformat(),
             "completed_at": self.completed_at.isoformat() if self.completed_at else None,
@@ -36,6 +38,7 @@ class Task:
         return cls(
             id=data["id"],
             title=data["title"],
+            notes=data.get("notes"),
             completed=data["completed"],
             created_at=datetime.fromisoformat(data["created_at"]),
             completed_at=datetime.fromisoformat(data["completed_at"])
