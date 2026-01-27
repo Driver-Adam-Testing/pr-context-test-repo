@@ -32,3 +32,14 @@ def time_ago(dt: datetime) -> str:
     else:
         days = int(seconds / 86400)
         return f"{days} day{'s' if days != 1 else ''} ago"
+
+
+def parse_date(date_str: str) -> datetime:
+    """Parse a date string in common formats."""
+    formats = ["%Y-%m-%d", "%Y/%m/%d", "%d-%m-%Y", "%m/%d/%Y"]
+    for fmt in formats:
+        try:
+            return datetime.strptime(date_str, fmt)
+        except ValueError:
+            continue
+    raise ValueError(f"Unable to parse date: {date_str}")
