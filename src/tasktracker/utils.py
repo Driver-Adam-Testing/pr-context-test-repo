@@ -32,3 +32,9 @@ def time_ago(dt: datetime) -> str:
     else:
         days = int(seconds / 86400)
         return f"{days} day{'s' if days != 1 else ''} ago"
+
+
+def search_tasks(tasks: list, query: str) -> list:
+    """Search tasks by title or description."""
+    query = query.lower()
+    return [t for t in tasks if query in str(t).lower()]
