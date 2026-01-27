@@ -50,4 +50,18 @@ class TagManager:
     def count(self) -> int:
         """Return the number of registered tags."""
         return len(self._tags)
-# Tag Management
+
+    def clear(self) -> None:
+        """Remove all tags."""
+        self._tags.clear()
+
+    def add_many(self, tags: List[str]) -> int:
+        """Add multiple tags at once.
+
+        Returns the number of new tags added.
+        """
+        added = 0
+        for tag in tags:
+            if self.add_tag(tag):
+                added += 1
+        return added

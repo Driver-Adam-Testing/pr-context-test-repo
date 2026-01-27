@@ -62,3 +62,20 @@ class TestTagManager:
         manager.add_tag("a")
         manager.add_tag("b")
         assert manager.count() == 2
+
+    def test_clear(self):
+        """clear removes all tags."""
+        manager = TagManager()
+        manager.add_tag("a")
+        manager.add_tag("b")
+        manager.clear()
+        assert manager.count() == 0
+        assert manager.get_all_tags() == []
+
+    def test_add_many(self):
+        """add_many adds multiple tags and returns count of new ones."""
+        manager = TagManager()
+        manager.add_tag("existing")
+        added = manager.add_many(["new1", "new2", "existing", "new3"])
+        assert added == 3
+        assert manager.count() == 4
