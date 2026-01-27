@@ -43,3 +43,12 @@ def parse_date(date_str: str) -> datetime:
         except ValueError:
             continue
     raise ValueError(f"Unable to parse date: {date_str}")
+
+
+def generate_task_id() -> int:
+    """Generate a unique task ID based on timestamp.
+
+    EXPERIMENTAL: This is a draft implementation.
+    """
+    import time
+    return int(time.time() * 1000) % 1000000
