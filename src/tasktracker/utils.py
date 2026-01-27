@@ -32,3 +32,8 @@ def time_ago(dt: datetime) -> str:
     else:
         days = int(seconds / 86400)
         return f"{days} day{'s' if days != 1 else ''} ago"
+
+
+def format_task_id(task_id: int) -> str:
+    """Format a task ID with leading zeros."""
+    return f"TASK-{task_id:04d}"
