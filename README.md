@@ -33,3 +33,4 @@ pip install -e ".[dev]"
 # Run tests
 pytest
 ```
+# v1.0.5
