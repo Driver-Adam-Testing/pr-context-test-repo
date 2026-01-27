@@ -14,6 +14,7 @@ class Task:
     completed: bool = False
     created_at: datetime = field(default_factory=datetime.now)
     completed_at: Optional[datetime] = None
+    sort_order: int = 0
 
     def complete(self) -> None:
         """Mark the task as completed."""
@@ -28,6 +29,7 @@ class Task:
             "completed": self.completed,
             "created_at": self.created_at.isoformat(),
             "completed_at": self.completed_at.isoformat() if self.completed_at else None,
+            "sort_order": self.sort_order,
         }
 
     @classmethod
@@ -41,4 +43,5 @@ class Task:
             completed_at=datetime.fromisoformat(data["completed_at"])
             if data["completed_at"]
             else None,
+            sort_order=data.get("sort_order", 0),
         )
