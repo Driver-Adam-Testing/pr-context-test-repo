@@ -86,6 +86,18 @@ def cmd_count(storage: TaskStorage, args: List[str]) -> int:
     return 0
 
 
+def cmd_clear(storage: TaskStorage, args: List[str]) -> int:
+    """Clear all completed tasks."""
+    tasks = storage.list_all()
+    cleared = 0
+    for task in tasks:
+        if task.completed:
+            storage.delete(task.id)
+            cleared += 1
+    print(f"Cleared {cleared} completed task(s)")
+    return 0
+
+
 def print_usage() -> None:
     """Print usage information."""
     print("Usage: tasktracker <command> [args]")
@@ -115,6 +127,7 @@ def main() -> int:
         "complete": cmd_complete,
         "delete": cmd_delete,
         "count": cmd_count,
+        "clear": cmd_clear,
     }
 
     if command == "help":
