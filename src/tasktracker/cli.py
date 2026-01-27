@@ -11,7 +11,8 @@ def print_task(task, verbose: bool = False) -> None:
     """Print a single task."""
     status = "[x]" if task.completed else "[ ]"
     title = truncate_string(task.title)
-    print(f"{task.id}. {status} {title}")
+    sort_indicator = f"[{task.sort_order}]" if hasattr(task, 'sort_order') and task.sort_order else ""
+    print(f"{task.id}. {status} {title} {sort_indicator}".rstrip())
     if verbose:
         print(f"   Created: {format_timestamp(task.created_at)}")
         if task.completed_at:
