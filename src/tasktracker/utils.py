@@ -32,3 +32,9 @@ def time_ago(dt: datetime) -> str:
     else:
         days = int(seconds / 86400)
         return f"{days} day{'s' if days != 1 else ''} ago"
+
+
+def filter_by_keyword(items: list, keyword: str, field: str = "title") -> list:
+    """Filter a list of items by keyword match on a field."""
+    keyword_lower = keyword.lower()
+    return [item for item in items if keyword_lower in getattr(item, field, "").lower()]
