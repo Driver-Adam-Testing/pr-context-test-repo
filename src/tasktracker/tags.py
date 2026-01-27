@@ -50,3 +50,4 @@ class TagManager:
     def count(self) -> int:
         """Return the number of registered tags."""
         return len(self._tags)
+# Tag Management
