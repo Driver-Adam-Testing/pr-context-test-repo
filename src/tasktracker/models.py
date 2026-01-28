@@ -47,3 +47,4 @@ class Task:
             if data["completed_at"]
             else None,
         )
+
