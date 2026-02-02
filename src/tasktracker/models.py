@@ -11,6 +11,7 @@ class Task:
 
     id: int
     title: str
+    description: Optional[str] = None
     completed: bool = False
     created_at: datetime = field(default_factory=datetime.now)
     completed_at: Optional[datetime] = None
@@ -20,11 +21,16 @@ class Task:
         self.completed = True
         self.completed_at = datetime.now()
 
+    def has_description(self) -> bool:
+        """Check if task has a description."""
+        return self.description is not None and len(self.description.strip()) > 0
+
     def to_dict(self) -> dict:
         """Convert task to dictionary for serialization."""
         return {
             "id": self.id,
             "title": self.title,
+            "description": self.description,
             "completed": self.completed,
             "created_at": self.created_at.isoformat(),
             "completed_at": self.completed_at.isoformat() if self.completed_at else None,
@@ -36,6 +42,7 @@ class Task:
         return cls(
             id=data["id"],
             title=data["title"],
+            description=data.get("description"),
             completed=data["completed"],
             created_at=datetime.fromisoformat(data["created_at"]),
             completed_at=datetime.fromisoformat(data["completed_at"])
