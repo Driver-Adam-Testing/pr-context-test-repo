@@ -49,3 +49,4 @@ class Task:
             if data["completed_at"]
             else None,
         )
+# Trigger re-analysis
