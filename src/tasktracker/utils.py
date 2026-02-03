@@ -48,3 +48,10 @@ def parse_date(date_str: str) -> datetime:
 def validate_id(task_id: int) -> bool:
     """Validate task ID is positive."""
     return task_id > 0
+
+
+def sanitize_input(text: str) -> str:
+    """Sanitize user input by removing leading/trailing whitespace and normalizing."""
+    if not text:
+        return ""
+    return " ".join(text.split())
