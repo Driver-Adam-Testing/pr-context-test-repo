@@ -43,3 +43,8 @@ def parse_date(date_str: str) -> datetime:
         except ValueError:
             continue
     raise ValueError(f"Unable to parse date: {date_str}")
+
+
+def validate_id(task_id: int) -> bool:
+    """Validate task ID is positive."""
+    return task_id > 0
