@@ -50,3 +50,5 @@ def validate_id(task_id: int) -> bool:
     return task_id > 0
 
 # Test Bedrock Opus 4.5 integration - Mon Feb  2 20:45:10 CST 2026
+
+# Verify Bedrock IAM fix - Mon Feb  2 21:16:29 CST 2026
