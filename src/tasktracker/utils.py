@@ -48,3 +48,5 @@ def parse_date(date_str: str) -> datetime:
 def validate_id(task_id: int) -> bool:
     """Validate task ID is positive."""
     return task_id > 0
+
+# Test Bedrock Opus 4.5 integration - Mon Feb  2 20:45:10 CST 2026
