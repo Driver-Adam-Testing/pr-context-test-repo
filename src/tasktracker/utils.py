@@ -43,3 +43,10 @@ def parse_date(date_str: str) -> datetime:
         except ValueError:
             continue
     raise ValueError(f"Unable to parse date: {date_str}")
+
+
+def truncate(text: str, max_len: int = 50) -> str:
+    """Truncate text to max length with ellipsis."""
+    if len(text) <= max_len:
+        return text
+    return text[:max_len - 3] + "..."
