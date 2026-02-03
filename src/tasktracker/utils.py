@@ -43,3 +43,8 @@ def parse_date(date_str: str) -> datetime:
         except ValueError:
             continue
     raise ValueError(f"Unable to parse date: {date_str}")
+
+
+def slugify(text: str) -> str:
+    """Convert text to a URL-friendly slug."""
+    return text.lower().replace(" ", "-")
