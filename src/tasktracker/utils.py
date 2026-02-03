@@ -48,3 +48,8 @@ def parse_date(date_str: str) -> datetime:
 def validate_id(task_id: int) -> bool:
     """Validate task ID is positive."""
     return task_id > 0
+
+
+def get_version() -> str:
+    """Return app version."""
+    return '1.0.0'
