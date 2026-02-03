@@ -131,3 +131,9 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+def format_task_priority(task) -> str:
+    """Format task priority for display."""
+    icons = {"low": "⬇️", "medium": "➡️", "high": "⬆️", "critical": "🔥"}
+    return f"{icons.get(task.priority, '?')} {task.priority.upper()}"
