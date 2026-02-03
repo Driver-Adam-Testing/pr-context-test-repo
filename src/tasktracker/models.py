@@ -2,7 +2,10 @@
 
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Literal
+
+
+PriorityLevel = Literal["low", "medium", "high", "critical"]
 
 
 @dataclass
@@ -11,6 +14,7 @@ class Task:
 
     id: int
     title: str
+    priority: PriorityLevel = "medium"
     completed: bool = False
     created_at: datetime = field(default_factory=datetime.now)
     completed_at: Optional[datetime] = None
@@ -20,11 +24,16 @@ class Task:
         self.completed = True
         self.completed_at = datetime.now()
 
+    def is_high_priority(self) -> bool:
+        """Check if task is high priority or critical."""
+        return self.priority in ("high", "critical")
+
     def to_dict(self) -> dict:
         """Convert task to dictionary for serialization."""
         return {
             "id": self.id,
             "title": self.title,
+            "priority": self.priority,
             "completed": self.completed,
             "created_at": self.created_at.isoformat(),
             "completed_at": self.completed_at.isoformat() if self.completed_at else None,
@@ -36,6 +45,7 @@ class Task:
         return cls(
             id=data["id"],
             title=data["title"],
+            priority=data.get("priority", "medium"),
             completed=data["completed"],
             created_at=datetime.fromisoformat(data["created_at"]),
             completed_at=datetime.fromisoformat(data["completed_at"])
