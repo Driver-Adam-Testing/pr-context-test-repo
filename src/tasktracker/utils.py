@@ -48,3 +48,10 @@ def parse_date(date_str: str) -> datetime:
 def validate_id(task_id: int) -> bool:
     """Validate task ID is positive."""
     return task_id > 0
+
+
+def pluralize(count: int, singular: str, plural: str | None = None) -> str:
+    """Return singular or plural form based on count."""
+    if plural is None:
+        plural = singular + "s"
+    return singular if count == 1 else plural
